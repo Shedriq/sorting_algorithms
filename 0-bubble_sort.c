@@ -1,29 +1,36 @@
 #include "sort.h"
 
 /**
-  * bubble_sort - A function for bubble sorting.
-  * @array: The array to sort.
-  * @size: THe length of the aaray.
-  * Return: Nothing.
-  */
+ * bubble_sort - impliments bubble sort algorithm
+ * @array: array to be sorted
+ * @size: size of the array to be sorted
+ */
+
 void bubble_sort(int *array, size_t size)
 {
-	size_t i = 0, j = 0;
-	int aux = 0;
+	size_t i, j;
+	int tmp, f;
 
-	if (array == NULL || size == 0)
+	if (size < 2)
 		return;
-	for (; i < size - 1; i++)
+
+	f = 0;
+
+	for (i = 0; i < size - 1; i++)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		for (j = 0; j < size - 1 - i; j++)
 		{
-			if (array[j] > array[j + 1])
+
+			if (array[j + 1] < array[j])
 			{
-				aux = array[j + 1];
+				tmp = array[j + 1];
 				array[j + 1] = array[j];
-				array[j] = aux;
+				array[j] = tmp;
 				print_array(array, size);
+				f = 1;
 			}
 		}
+		if (f == 0)
+			return;
 	}
 }
